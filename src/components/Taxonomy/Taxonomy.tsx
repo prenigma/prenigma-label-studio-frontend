@@ -267,7 +267,7 @@ const Item: React.FC<RowProps> = ({ style, item, dimensionCallback, maxWidth, is
           <HintTooltip title={hint}>
             <div className={[styles.taxonomy__item, customClassname].join(' ')}>
               <div className={styles.taxonomy__grouping} onClick={() => toggle(id)}>
-                <LsChevron stroke="#09f" style={arrowStyle} />
+                <LsChevron stroke="#4e32bc" style={arrowStyle} />
               </div>
               <input
                 className="item"
@@ -584,7 +584,7 @@ const Taxonomy = ({
         <div className={['htx-taxonomy', styles.taxonomy, isOpenClassName].join(' ')} ref={taxonomyRef}>
           <span onClick={() => setOpen(val => !val)}>
             {options.placeholder || 'Click to add...'}
-            <LsChevron stroke="#09f" />
+            <LsChevron stroke="#4e32bc" />
           </span>
           <TaxonomyDropdown show={isOpen} isEditable={isEditable} items={items} flatten={flatten} dropdownRef={dropdownRef} />
         </div>

@@ -16,7 +16,7 @@
         background var(--header-background-new)
         color var(--icon-color)
         &:hover
-          --icon-color #096DD9
+          --icon-color $color_inexchange_to_096DD9
           --header-background-new #d8e7f9
           
     &.panel
@@ -83,8 +83,8 @@
       margin 0
 
     &:hover
-      --icon-color #096DD9
-      --header-background rgba(#096DD9, 0.16)
+      --icon-color $color_inexchange_to_096DD9
+      --header-background rgba($color_inexchange_to_096DD9, 0.16)
 
   &__header
     top 0
@@ -134,7 +134,7 @@
       display block
 
     &:hover
-      background-color rgba(#096DD9, 0.16)
+      background-color rgba($color_inexchange_to_096DD9, 0.16)
 
   &:not(&_detached)&_hidden &__toggle
     pointer-events none

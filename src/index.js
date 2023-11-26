@@ -1,4 +1,5 @@
 import './core/feature-flags';
+import './assets/styles/antd-global.less';
 import './assets/styles/global.scss';
 import { LabelStudio } from './LabelStudio';
 

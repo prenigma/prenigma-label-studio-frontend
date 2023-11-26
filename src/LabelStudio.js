@@ -14,6 +14,7 @@ import { destroy } from 'mobx-state-tree';
 import { destroy as destroySharedStore } from './mixins/SharedChoiceStore/mixin';
 import { cleanDomAfterReact, findReactKey } from './utils/reactCleaner';
 import { FF_LSDV_4620_3_ML, isFF } from './utils/feature-flags';
+import ConfigProvider from 'antd/lib/config-provider';
 
 configure({
   isolateGlobalState: true,
@@ -71,10 +72,18 @@ export class LabelStudio {
         clearRenderedApp();
       }
       render((
-        <App
-          store={this.store}
-          panels={registerPanels(this.options.panels) ?? []}
-        />
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#4e32bc',
+            }
+          }}
+        >
+          <App
+            store={this.store}
+            panels={registerPanels(this.options.panels) ?? []}
+          />
+        </ConfigProvider>
       ), rootElement);
     };
 

@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
@@ -44,6 +45,9 @@ const LOCAL_ENV = {
 };
 
 console.log(LOCAL_ENV);
+
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, './src/assets/styles/antd-global.less'), 'utf8'));
 
 const babelOptimizeOptions = () => {
   return BUILD.NO_MINIMIZE
@@ -350,6 +354,22 @@ module.exports = ({ withDevServer = true } = {}) => ({
             use: cssLoader(),
           },
         ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                modifyVars: themeVariables,
+                javascriptEnabled: true,
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.scss$/i,
